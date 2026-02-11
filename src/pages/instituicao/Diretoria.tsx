@@ -34,25 +34,27 @@ const secoes: Secao[] = [
     membros: [
       {
         id: 1,
-        nome: 'Nome do(a) Presidente',
+        nome: 'João Batista dos Santos Neto',
         cargo: 'Presidente',
-        email: 'presidente@crfal.org.br',
+        email: 'presidente@crf-al.org.br',
       },
       {
         id: 2,
-        nome: 'Nome do(a) Vice-Presidente',
+        nome: 'Lyvia Quintela Cavalcante Trajano',
         cargo: 'Vice-Presidente',
         email: 'vicepresidente@crfal.org.br',
       },
       {
         id: 3,
-        nome: 'Nome do(a) Secretário(a)-Geral',
-        cargo: 'Secretário(a)-Geral',
+        nome: 'Ana Renata de Almeida Lima',
+        cargo: 'Secretária-Geral',
+        email: 'secretaria@crf-al.org.br',
       },
       {
         id: 4,
-        nome: 'Nome do(a) Tesoureiro(a)',
-        cargo: 'Tesoureiro(a)',
+        nome: 'Isadora Lyra Cavalcanti',
+        cargo: 'Tesoureira',
+        email: 'tesoureira@crf-al.org.br',
       },
     ],
   },
@@ -65,7 +67,7 @@ const secoes: Secao[] = [
       {
         id: 5,
         nome: 'Nome do(a) Conselheiro(a)',
-        cargo: 'Conselheiro(a) Efetivo(a)',
+        cargo: 'Conselheiro(a) Efetivo(a)', 
       },
       {
         id: 6,

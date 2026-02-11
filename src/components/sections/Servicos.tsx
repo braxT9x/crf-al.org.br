@@ -29,16 +29,19 @@ const services: Service[] = [
   {
     id: 1,
     icon: FileText,
-    title: 'Inscrição/Inscrição',
-    description: 'Faça sua inscrição no CRFAL ou renove sua inscrição anual.',
+    title: 'Primeira Inscrição - Pessoa Física',
+    description: 'Destinado a farmacêuticos que nunca estiveram inscritos em nenhum Conselho Regional de Farmácia.',
     tutorial: {
       steps: [
-        'Acesse o portal do farmacêutico',
-        'Clique em "Nova Inscrição" ou "Renovação"',
-        'Preencha os dados pessoais e profissionais',
-        'Anexe os documentos necessários',
+        'Acesse o portal do CRF em Casa',
+        'Clique em "Pré Inscrição Pessoa Física"',
+        'Preencha o formulário atentamente',
+        'Anexe os documentos necessários' ,
         'Realize o pagamento da taxa',
-        'Aguarde a análise do CRFAL',
+        'Aguarde a análise da sua documentação',
+        'Apos a analise e aprovação em plenaria, você receberá um email avisando a aprovação da sua inscrição',
+        
+
       ],
     },
   },

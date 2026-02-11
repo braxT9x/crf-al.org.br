@@ -6,6 +6,7 @@ import Historia from './pages/instituicao/Historia';
 import MissaoVisao from './pages/instituicao/MissaoVisao';
 import Diretoria from './pages/instituicao/Diretoria';
 import Estatuto from './pages/instituicao/Estatuto';
+import Contato from './pages/contato/Contato';
 import Requerimentos from './pages/servicos/Requerimentos';
 import Tutoriais from './pages/servicos/Tutoriais';
 import './App.css';
@@ -23,6 +24,7 @@ function App() {
           <Route path="instituicao/estatuto" element={<Estatuto />} />
           <Route path="servicos/requerimentos" element={<Requerimentos />} />
           <Route path="servicos/tutoriais" element={<Tutoriais />} />
+          <Route path="contato" element={<Contato />} />
         </Route>
       </Routes>
     </BrowserRouter>

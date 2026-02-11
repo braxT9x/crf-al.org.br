@@ -43,7 +43,8 @@ const quickAccessItems: QuickAccessItem[] = [
     icon: UserCircle,
     title: 'Portal da Transparência',
     description: 'Transparência e acesso a informações do Conselho',
-    href: '#portal',
+    href: 'https://crf-al.implanta.net.br/portalTransparencia/#publico/inicio',
+    target: '_blank',
     color: 'from-indigo-500 to-indigo-600',
   },
 ];

@@ -51,13 +51,7 @@ const navItems: NavItem[] = [
   },
   {
     label: 'Transparência',
-    href: '#transparencia',
-    submenu: [
-      { label: 'Prestação de Contas', href: '#contas' },
-      { label: 'Licitações', href: '#licitacoes' },
-      { label: 'Contratos', href: '#contratos' },
-      { label: 'Relatórios', href: '#relatorios' },
-    ],
+    href: 'https://crf-al.implanta.net.br/portalTransparencia/#publico/inicio',   
   },
   {
     label: 'Imprensa',
@@ -70,12 +64,7 @@ const navItems: NavItem[] = [
   },
   {
     label: 'Fale Conosco',
-    href: '#contato',
-    submenu: [
-      { label: 'Contato', href: '#fale-conosco' },
-      { label: 'Ouvidoria', href: '#ouvidoria' },
-      { label: 'FAQ', href: '#faq' },
-    ],
+    href: '/contato',
   },
 ];
 
