@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
     submenu: [
       { label: 'Boletos e Anuidades', href: '#boletos-anuidades' },
       { label: 'Requerimentos', href: '/servicos/requerimentos' },
-      { label: 'Ouvidoria', href: '#ouvidoria' },
+      { label: 'Ouvidoria', href: '/servicos/ouvidoria' },
       { label: 'Tutoriais', href: '/servicos/tutoriais' },
     ],
   },
