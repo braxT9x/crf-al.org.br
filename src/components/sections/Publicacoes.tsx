@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, Tag } from 'lucide-react';
 
 // 1. Interface para os dados BRUTOS que vêm do WordPress
@@ -6,6 +7,7 @@ interface WPPost {
   id: number;
   date: string;
   link: string;
+  slug: string;
   title: {
     rendered: string;
   };
@@ -100,7 +102,7 @@ export default function Publicacoes() {
             date: formatarData(post.date),
             tag: categoryName,
             tagColor: getTagColor(categoryName),
-            href: post.link, // Link para o post original ou página interna
+            href: `/publicacao/${post.slug}`,
           };
         });
 
@@ -241,15 +243,15 @@ export default function Publicacoes() {
                   </p>
 
                   {/* Read More */}
-                  <a
-                    href={pub.href}
+                  <Link
+                    to={pub.href}
                     className="inline-flex items-center gap-2 text-crfal-blue font-medium text-sm group/link"
                   >
                     <span className="group-hover/link:underline">
                       Ler mais
                     </span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
