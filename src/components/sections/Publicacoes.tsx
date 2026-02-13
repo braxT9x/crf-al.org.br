@@ -36,7 +36,7 @@ interface Publication {
 }
 
 // 🔴 Configure aqui a URL do seu WordPress
-const WP_API_URL = "http://crf-al.siteempresarial.com/wp-json/wp/v2/posts?_embed&per_page=6";
+const WP_API_URL = "http://wordpress.crf-al.org.br/wp-json/wp/v2/posts?_embed&per_page=6";
 
 // Helper para formatar a data
 const formatarData = (dataISO: string) => {
