@@ -77,6 +77,43 @@ function mapWPPost(post: WPPost): Publication {
   };
 }
 
+function RevealCard({ children, index }: { children: React.ReactNode; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        isVisible
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-12'
+      }`}
+      style={{ transitionDelay: isVisible ? `${(index % 3) * 120}ms` : '0ms' }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Noticias() {
   const [publications, setPublications] = useState<Publication[]>([]);
   const [activeTag, setActiveTag] = useState('all');
@@ -223,57 +260,56 @@ export default function Noticias() {
         ) : (
           <>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPublications.map((pub) => (
-                <article
-                  key={pub.id}
-                  className="group bg-white rounded-2xl overflow-hidden border border-neutral-200 hover:border-crfal-blue/30 hover:shadow-lg transition-all duration-300"
-                >
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={pub.image}
-                      alt={pub.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          'https://via.placeholder.com/400x200?text=Sem+Imagem';
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute top-4 left-4">
-                      <span
-                        className={`inline-flex items-center gap-1 px-3 py-1 ${pub.tagColor} text-white text-xs font-semibold rounded-full`}
+              {filteredPublications.map((pub, index) => (
+                <RevealCard key={pub.id} index={index}>
+                  <article className="group bg-white rounded-2xl overflow-hidden border border-neutral-200 hover:border-crfal-blue/30 hover:shadow-lg transition-all duration-300 h-full">
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={pub.image}
+                        alt={pub.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src =
+                            'https://via.placeholder.com/400x200?text=Sem+Imagem';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute top-4 left-4">
+                        <span
+                          className={`inline-flex items-center gap-1 px-3 py-1 ${pub.tagColor} text-white text-xs font-semibold rounded-full`}
+                        >
+                          <Tag className="w-3 h-3" />
+                          {pub.tag}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 text-neutral-500 text-sm mb-3">
+                        <Calendar className="w-4 h-4" />
+                        {pub.date}
+                      </div>
+
+                      <h3
+                        className="font-bold text-neutral-800 mb-2 line-clamp-2 group-hover:text-crfal-blue transition-colors duration-300"
+                        dangerouslySetInnerHTML={{ __html: pub.title }}
+                      />
+
+                      <p className="text-sm text-neutral-600 mb-4 line-clamp-2">
+                        {pub.excerpt}
+                      </p>
+
+                      <Link
+                        to={pub.href}
+                        className="inline-flex items-center gap-2 text-crfal-blue font-medium text-sm group/link"
                       >
-                        <Tag className="w-3 h-3" />
-                        {pub.tag}
-                      </span>
+                        <span className="group-hover/link:underline">Ler mais</span>
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                      </Link>
                     </div>
-                  </div>
-
-                  <div className="p-5">
-                    <div className="flex items-center gap-2 text-neutral-500 text-sm mb-3">
-                      <Calendar className="w-4 h-4" />
-                      {pub.date}
-                    </div>
-
-                    <h3
-                      className="font-bold text-neutral-800 mb-2 line-clamp-2 group-hover:text-crfal-blue transition-colors duration-300"
-                      dangerouslySetInnerHTML={{ __html: pub.title }}
-                    />
-
-                    <p className="text-sm text-neutral-600 mb-4 line-clamp-2">
-                      {pub.excerpt}
-                    </p>
-
-                    <Link
-                      to={pub.href}
-                      className="inline-flex items-center gap-2 text-crfal-blue font-medium text-sm group/link"
-                    >
-                      <span className="group-hover/link:underline">Ler mais</span>
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
-                    </Link>
-                  </div>
-                </article>
+                  </article>
+                </RevealCard>
               ))}
             </div>
 
