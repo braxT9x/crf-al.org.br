@@ -57,7 +57,7 @@ const navItems: NavItem[] = [
     label: 'Imprensa',
     href: '#imprensa',
     submenu: [
-      { label: 'Notícias', href: '#noticias' },
+      { label: 'Notícias', href: '/imprensa/noticias' },
       { label: 'Comunicados', href: '#comunicados' },
       { label: 'Galeria', href: '#galeria' },
     ],
@@ -158,7 +158,28 @@ export default function Header() {
                   onMouseEnter={() => setActiveDropdown(item.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  {item.href.startsWith('/') ? (
+                  {item.submenu ? (
+                    <button
+                      type="button"
+                      className={`${navLinkBase} ${
+                        isOverHero
+                          ? activeDropdown === item.label
+                            ? navLinkActiveLight
+                            : navLinkInactiveLight
+                          : activeDropdown === item.label
+                            ? navLinkActiveSolid
+                            : navLinkInactiveSolid
+                      }`}
+                      onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
+                    >
+                      {item.label}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          activeDropdown === item.label ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                  ) : item.href.startsWith('/') ? (
                     <Link
                       to={item.href}
                       className={`${navLinkBase} ${
@@ -172,13 +193,6 @@ export default function Header() {
                       }`}
                     >
                       {item.label}
-                      {item.submenu && (
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            activeDropdown === item.label ? 'rotate-180' : ''
-                          }`}
-                        />
-                      )}
                     </Link>
                   ) : (
                     <a
@@ -194,13 +208,6 @@ export default function Header() {
                       }`}
                     >
                       {item.label}
-                      {item.submenu && (
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            activeDropdown === item.label ? 'rotate-180' : ''
-                          }`}
-                        />
-                      )}
                     </a>
                   )}
 

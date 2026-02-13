@@ -10,6 +10,7 @@ import Contato from './pages/contato/Contato';
 import Requerimentos from './pages/servicos/Requerimentos';
 import Tutoriais from './pages/servicos/Tutoriais';
 import Ouvidoria from './pages/servicos/Ouvidoria';
+import Noticias from './pages/imprensa/Noticias';
 import PublicacaoDetalhe from './pages/PublicacaoDetalhe';
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="servicos/requerimentos" element={<Requerimentos />} />
           <Route path="servicos/tutoriais" element={<Tutoriais />} />
           <Route path="servicos/ouvidoria" element={<Ouvidoria />} />
+          <Route path="imprensa/noticias" element={<Noticias />} />
           <Route path="contato" element={<Contato />} />
           <Route path="publicacao/:slug" element={<PublicacaoDetalhe />} />
         </Route>
